@@ -1,6 +1,6 @@
 //
 //  Created by Jonathan and Mangueira on 26/06/2018.
-//  Copyright © 2018 Jonh. All rights reserved.
+//  Copyright © 2018 Jonathan. All rights reserved.
 //
 
 #include <stdio.h>
@@ -16,26 +16,34 @@ int x, y;//Coordenadas da matriz
 char mat[4][4];//Criação da matriz
 
 int main(void) {
-    char op;
+    char tecla;
     int i, j;
     x = 0, y = 0;
     
     **mat = inicializa();//Inicialização da Matriz
     while(1){
-        scanf("%c",&op);
-        flush_in();//Limpando o buffer do teclado
-        system("@cls||clear");//Limpando o terminal FUNFA NO DEVC++
-        
-        switch(op){
-            case 26: direita();//descobrir qual é o código ASCII das setas do teclado
-                break;
-                
-            case 113: break;
-                
-            default: printf("\nTeclas permitidas: \nSeta direcional esquerda \nSeta direcional superior\nSeta direcional direita\nSeta direcional inferior\n 'Q' para sair\n");
-                break;
-        }
+        //scanf("%c",&op);
+		tecla = getch();
+		system("@cls||clear");//Limpando o terminal FUNFA NO DEVC++
+		if (tecla == -32){
+		    tecla = getch();
+		    switch(tecla){
+		        case 72: cima();//Seta para cima
+		            break;
+		        case 75: esquerda();//Seta para esquerda
+		            break;
+		        case 77: direita();//Seta para direita
+		            break;
+		        case 80: baixo();//Seta para baixo
+		            break;
+		        case 113: 
+					break;
+	            default: printf("Teclas permitidas: \nSeta direcional esquerda \nSeta direcional superior\nSeta direcional direita\nSeta direcional inferior\n 'Q' para sair\n\n");
+	                break;
+        	}
+    	}
         imprimir();
+        //flush_in();//Limpando o buffer do teclado T¡ BUGANDO
     }
     
     printf("\n\n");
@@ -91,13 +99,12 @@ void imprimir(){//Função que imprime a matriz completa
 
 void **direita(){//Função que move o '*' para a direita
     char aux;
-    
+
     aux = mat[x][y];
     mat[x][y] = mat[x][y+1];
     mat[x][y+1] = aux;
     
     y +=1;
-    return (**mat);
 }
 
 void **esquerda(){//Função que move o '*' para a esquerda
@@ -105,24 +112,12 @@ void **esquerda(){//Função que move o '*' para a esquerda
     
     aux = mat[x][y];
     mat[x][y] = mat[x][y-1];
-    mat[x][y+-] = aux;
+    mat[x][y-1] = aux;
     
     y -=1;
-    return (**mat);
 }
 
 void **cima(){//Função que move o '*' para a cima
-    char aux;
-    
-    aux = mat[x][y];
-    mat[x][y] = mat[x+1][y];
-    mat[x+1][y] = aux;
-    
-    x +=1;
-    return (**mat);
-}
-
-void **baixo(){//Função que move o '*' para a baixo
     char aux;
     
     aux = mat[x][y];
@@ -130,5 +125,14 @@ void **baixo(){//Função que move o '*' para a baixo
     mat[x-1][y] = aux;
     
     x -=1;
-    return (**mat);
+}
+
+void **baixo(){//Função que move o '*' para a baixo
+    char aux;
+    
+    aux = mat[x][y];
+    mat[x][y] = mat[x+1][y];
+    mat[x+1][y] = aux;
+    
+    x +=1;
 }
