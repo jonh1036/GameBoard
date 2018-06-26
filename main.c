@@ -1,5 +1,5 @@
 //
-//  Created by Jonathan and Mangueira on 26/06/2018.
+//  Created by Jonathan Pinho and Vinicius Mangueira on 26/06/2018.
 //  Copyright © 2018 Jonathan. All rights reserved.
 //
 
@@ -103,27 +103,32 @@ void imprimir(){//Fun‹o que imprime a matriz completa
 void **direita(){//Fun‹o que move o '*' para a direita
     char aux;
 
+	if(mat[x][y] > mat[x][15]) { //adcionando extremidades pra direita
+	
     aux = mat[x][y];
     mat[x][y] = mat[x][y+1];
     mat[x][y+1] = aux;
     
     y +=1;
+	}
 }
 
 void **esquerda(){//Fun‹o que move o '*' para a esquerda
     char aux;
     
-    aux = mat[x][y];
+    if(mat[x][y] > mat[x][0]) { //adcionando extremidades pra esquerda
+	aux = mat[x][y];
     mat[x][y] = mat[x][y-1];
     mat[x][y-1] = aux;
     
     y -=1;
+	}
 }
 
 void **cima(){//Fun‹o que move o '*' para a cima
     char aux;
     
-    if(mat[x][y] > mat[0][y]) {
+    if(mat[x][y] > mat[0][y]) { //adcionando extremidades pra cima
 	
 	aux = mat[x][y];
     mat[x][y] = mat[x-1][y];
@@ -137,11 +142,12 @@ void **cima(){//Fun‹o que move o '*' para a cima
 void **baixo(){//Fun‹o que move o '*' para a baixo
     char aux;
     
+    if(mat[x][y] > mat[3][y]) { //adcionando extremidades pra baixo
     aux = mat[x][y];
     mat[x][y] = mat[x+1][y];
     mat[x+1][y] = aux;	
 		x +=1;
-	
+	}
 
     
 }
