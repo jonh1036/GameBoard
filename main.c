@@ -36,8 +36,11 @@ int main(void) {
 		            break;
 		        case 80: baixo();//Seta para baixo
 		            break;
-		        case 113: 
-					break;
+	
+				case 113: 
+					exit(0);
+					
+
 	            default: printf("Teclas permitidas: \nSeta direcional esquerda \nSeta direcional superior\nSeta direcional direita\nSeta direcional inferior\n 'Q' para sair\n\n");
 	                break;
         	}
@@ -120,11 +123,15 @@ void **esquerda(){//Função que move o '*' para a esquerda
 void **cima(){//Função que move o '*' para a cima
     char aux;
     
-    aux = mat[x][y];
+    if(mat[x][y] > mat[0][y]) {
+	
+	aux = mat[x][y];
     mat[x][y] = mat[x-1][y];
     mat[x-1][y] = aux;
     
     x -=1;
+}
+
 }
 
 void **baixo(){//Função que move o '*' para a baixo
@@ -132,7 +139,11 @@ void **baixo(){//Função que move o '*' para a baixo
     
     aux = mat[x][y];
     mat[x][y] = mat[x+1][y];
-    mat[x+1][y] = aux;
+    mat[x+1][y] = aux;	
+		x +=1;
+	
+
     
-    x +=1;
 }
+
+
