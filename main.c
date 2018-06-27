@@ -13,54 +13,47 @@ void **cima();
 void **baixo();
 
 int x, y;//Coordenadas da matriz
-char mat[4][4];//Criação da matriz
+char mat[4][4];//CriaÁ„o da matriz
 
 int main(void) {
     char tecla;
     int i, j;
     x = 0, y = 0;
     
-    **mat = inicializa();//Inicialização da Matriz
+    **mat = inicializa();//InicializaÁ„o da Matriz
     while(1){
         //scanf("%c",&op);
 		tecla = getch();
 		system("@cls||clear");//Limpando o terminal FUNFA NO DEVC++
-		if (tecla == -32){
-		    tecla = getch();
-		    switch(tecla){
-		        case 72: cima();//Seta para cima
-		            break;
-		        case 75: esquerda();//Seta para esquerda
-		            break;
-		        case 77: direita();//Seta para direita
-		            break;
-		        case 80: baixo();//Seta para baixo
-		            break;
-	
-				case 113: 
-					exit(0);
-					
-
-	            default: printf("Teclas permitidas: \nSeta direcional esquerda \nSeta direcional superior\nSeta direcional direita\nSeta direcional inferior\n 'Q' para sair\n\n");
-	                break;
-        	}
-    	}
+		switch(tecla){
+		    case 97: esquerda();//Movimentar para esquerda
+		        break;
+		    case 100: direita();//Movimentar para direita
+		        break;
+			case 113: exit(0);//Para encerrar o jogo
+		      	
+			case 115: baixo();//Movimentar para baixo
+		    	break;
+		    case 119: cima();//Movimentar para cima
+		        break;
+	        default: printf("Teclas permitidas: \nPara cima (tecla W), \nPara baixo (tecla S),\nPara a esquerda (tecla A)\nPara a direita (tecla D)\nPara sair (tecla Q)\n\n");
+	            break;
+        }
         imprimir();
         //flush_in();//Limpando o buffer do teclado T¡ BUGANDO
     }
-    
     printf("\n\n");
     return 0;
 }
 
-void flush_in() {//Função que limpa o buffer do teclado
+void flush_in() {//FunÁ„o que limpa o buffer do teclado
     int ch;
     do {
         ch = fgetc(stdin);
     } while (ch != EOF && ch != '\n');
 }
 
-char **inicializa(){//Função que inicializa a matriz no início do programa
+char **inicializa(){//Função que inicializa a matriz no inÌcio do programa
     int i, j;
     for(i = 0; i < 4; i++ ){
         printf("|");
@@ -85,7 +78,7 @@ char **inicializa(){//Função que inicializa a matriz no início do programa
     return (**mat);
 }
 
-void imprimir(){//Função que imprime a matriz completa
+void imprimir(){//FunÁ„o que imprime a matriz completa
     int i, j;
     
     for(i = 0; i < 4; i++){
@@ -100,56 +93,46 @@ void imprimir(){//Função que imprime a matriz completa
     }
 }
 
-void **direita(){//Função que move o '*' para a direita
+void **direita(){//FunÁ„o que move o '*' para a direita
     char aux;
 
-	if(mat[x][y] > mat[x][15]) { //adcionando extremidades pra direita
-	
-    aux = mat[x][y];
-    mat[x][y] = mat[x][y+1];
-    mat[x][y+1] = aux;
-    
-    y +=1;
+	if(mat[x][y] > mat[x][3]) { //Adicionando limite para a extremidade direita
+	    aux = mat[x][y];
+	    mat[x][y] = mat[x][y+1];
+	    mat[x][y+1] = aux;
+	    y +=1;
 	}
 }
 
 void **esquerda(){//Função que move o '*' para a esquerda
     char aux;
     
-    if(mat[x][y] > mat[x][0]) { //adcionando extremidades pra esquerda
-	aux = mat[x][y];
-    mat[x][y] = mat[x][y-1];
-    mat[x][y-1] = aux;
-    
-    y -=1;
+    if(mat[x][y] > mat[x][0]) { //Adicionando limite para a extremidade esquerda
+		aux = mat[x][y];
+	    mat[x][y] = mat[x][y-1];
+	    mat[x][y-1] = aux;
+	    y -=1;
 	}
 }
 
 void **cima(){//Função que move o '*' para a cima
     char aux;
     
-    if(mat[x][y] > mat[0][y]) { //adcionando extremidades pra cima
-	
-	aux = mat[x][y];
-    mat[x][y] = mat[x-1][y];
-    mat[x-1][y] = aux;
-    
-    x -=1;
-}
-
+    if(mat[x][y] > mat[0][y]) { //Adicionando limite para a extremidade de cima
+		aux = mat[x][y];
+	    mat[x][y] = mat[x-1][y];
+	    mat[x-1][y] = aux;
+	    x -=1;
+	}
 }
 
 void **baixo(){//Função que move o '*' para a baixo
     char aux;
     
-    if(mat[x][y] > mat[3][y]) { //adcionando extremidades pra baixo
-    aux = mat[x][y];
-    mat[x][y] = mat[x+1][y];
-    mat[x+1][y] = aux;	
+    if(mat[x][y] > mat[3][y]) { //Adicionando limite para a extremidade de baixo
+	    aux = mat[x][y];
+	    mat[x][y] = mat[x+1][y];
+	    mat[x+1][y] = aux;
 		x +=1;
-	}
-
-    
+	}   
 }
-
-
