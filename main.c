@@ -1,7 +1,7 @@
 //
 //  Created by Jonathan Pinho and Vinicius Mangueira on 26/06/2018.
 //  Copyright © 2018 Jonathan. All rights reserved.
-//
+// Version 0.8 Relase: Beta
 
 #include <stdio.h>
 void flush_in();
