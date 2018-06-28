@@ -22,8 +22,7 @@ int main(void) {
     inicializa();//Inicialização da Matriz
     while(1){
 		tecla = getch();
-		//system("@cls||clear");//Limpando o terminal FUNFA NO DEVC++
-		system("cls");
+		system("@cls||clear");//Limpando o terminal FUNFA NO DEVC++
 		switch(tecla){
 		    case 97: esquerda();//Movimentar para esquerda
 		        break;
