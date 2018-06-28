@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 void imprimir();
-void **inicializa();
-void **direita();
-void **esquerda();
-void **cima();
-void **baixo();
+void inicializa();
+void direita();
+void esquerda();
+void cima();
+void baixo();
 
 int x, y;//Coordenadas da matriz
 char mat[4][4];//CriaÁ„o da matriz
@@ -21,7 +21,6 @@ int main(void) {
     
     inicializa();//InicializaÁ„o da Matriz
     while(1){
-        //scanf("%c",&op);
 		tecla = getch();
 		system("@cls||clear");//Limpando o terminal FUNFA NO DEVC++
 		switch(tecla){
@@ -43,7 +42,7 @@ int main(void) {
     printf("\n\n");
     return 0;
 }
-void **inicializa(){//Função que inicializa a matriz no inÌcio do programa
+void inicializa(){//Função que inicializa a matriz no inÌcio do programa
     int i, j;
     for(i = 0; i < 4; i++ ){
         printf("|");
@@ -81,9 +80,8 @@ void imprimir(){//FunÁ„o que imprime a matriz completa
     }
 }
 
-void **direita(){//FunÁ„o que move o '*' para a direita
+void direita(){//FunÁ„o que move o '*' para a direita
     char aux;
-
 	if(mat[x][y] > mat[x][3]) { //Adicionando limite para a extremidade direita
 	    aux = mat[x][y];
 	    mat[x][y] = mat[x][y+1];
@@ -92,7 +90,7 @@ void **direita(){//FunÁ„o que move o '*' para a direita
 	}
 }
 
-void **esquerda(){//Função que move o '*' para a esquerda
+void esquerda(){//Função que move o '*' para a esquerda
     char aux;
     if(mat[x][y] > mat[x][0]) { //Adicionando limite para a extremidade esquerda
 	    aux = mat[x][y];
@@ -102,9 +100,8 @@ void **esquerda(){//Função que move o '*' para a esquerda
 	}
 }
 
-void **cima(){//Função que move o '*' para a cima
+void cima(){//Função que move o '*' para a cima
     char aux;
-    
     if(mat[x][y] > mat[0][y]) { //Adicionando limite para a extremidade de cima
 		aux = mat[x][y];
 	    mat[x][y] = mat[x-1][y];
@@ -113,9 +110,8 @@ void **cima(){//Função que move o '*' para a cima
 	}
 }
 
-void **baixo(){//Função que move o '*' para a baixo
+void baixo(){//Função que move o '*' para a baixo
     char aux;
-    
     if(mat[x][y] > mat[3][y]) { //Adicionando limite para a extremidade de baixo
 	    aux = mat[x][y];
 	    mat[x][y] = mat[x+1][y];
