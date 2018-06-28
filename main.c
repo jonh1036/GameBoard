@@ -4,9 +4,8 @@
 // Version 0.8 Relase: Beta
 
 #include <stdio.h>
-void flush_in();
 void imprimir();
-char **inicializa();
+void **inicializa();
 void **direita();
 void **esquerda();
 void **cima();
@@ -20,7 +19,7 @@ int main(void) {
     int i, j;
     x = 0, y = 0;
     
-    **mat = inicializa();//InicializaÁ„o da Matriz
+    inicializa();//InicializaÁ„o da Matriz
     while(1){
         //scanf("%c",&op);
 		tecla = getch();
@@ -40,20 +39,11 @@ int main(void) {
 	            break;
         }
         imprimir();
-        //flush_in();//Limpando o buffer do teclado T¡ BUGANDO
     }
     printf("\n\n");
     return 0;
 }
-
-void flush_in() {//FunÁ„o que limpa o buffer do teclado
-    int ch;
-    do {
-        ch = fgetc(stdin);
-    } while (ch != EOF && ch != '\n');
-}
-
-char **inicializa(){//Função que inicializa a matriz no inÌcio do programa
+void **inicializa(){//Função que inicializa a matriz no inÌcio do programa
     int i, j;
     for(i = 0; i < 4; i++ ){
         printf("|");
@@ -75,12 +65,10 @@ char **inicializa(){//Função que inicializa a matriz no inÌcio do programa
         }
         printf("|\n");
     }
-    return (**mat);
 }
 
 void imprimir(){//FunÁ„o que imprime a matriz completa
     int i, j;
-    
     for(i = 0; i < 4; i++){
         printf("|");
         for(j = 0; j < 4; j++){
@@ -106,9 +94,8 @@ void **direita(){//FunÁ„o que move o '*' para a direita
 
 void **esquerda(){//Função que move o '*' para a esquerda
     char aux;
-    
     if(mat[x][y] > mat[x][0]) { //Adicionando limite para a extremidade esquerda
-		aux = mat[x][y];
+	    aux = mat[x][y];
 	    mat[x][y] = mat[x][y-1];
 	    mat[x][y-1] = aux;
 	    y -=1;
