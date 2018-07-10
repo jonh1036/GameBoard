@@ -1,6 +1,6 @@
 //
 //  Created by Jonathan Pinho and Vinicius Mangueira on 26/06/2018.
-//  Copyright Â© 2018 Jonathan. All rights reserved.
+//  Copyright © 2018 Jonathan. All rights reserved.
 // Version 0.8 Relase: Beta
 
 #include <stdio.h>
@@ -12,14 +12,14 @@ void cima();
 void baixo();
 
 int x, y;//Coordenadas da matriz
-char mat[4][4];//CriaÃ§Ã£o da matriz
+char mat[4][4];//Criação da matriz
 
 int main(void) {
     char tecla;
     int i, j;
     x = 0, y = 0;
     
-    inicializa();//InicializaÃ§Ã£o da Matriz
+    inicializa();//Inicialização da Matriz
     while(1){
 		tecla = getch();
 		system("cls");
@@ -42,45 +42,29 @@ int main(void) {
     printf("\n\n");
     return 0;
 }
-void inicializa(){//FunÃ§Ã£o que inicializa a matriz no inÃ­cio do programa
+void inicializa(){//Função que inicializa a matriz no início do programa
     int i, j;
-    for(i = 0; i < 4; i++ ){
-        printf("|");
-        
-        if(i == 0){
-            mat[0][0] = '*';//Origem
-            printf("%c",mat[0][0]);
-            
-            for(j = 1; j < 4; j++){
-                mat[i][j] = ' ';
-                printf("%c",mat[i][j]);
-            }
-        }
-        else{
-            for(j = 0; j < 4; j++){
-                mat[i][j] = ' ';
-                printf("%c",mat[i][j]);
-            }
-        }
-        printf("|\n");
-    }
+    for(i = 0; i < 4; i++ )
+        for(j = 0; j < 4; j++)
+            mat[i][j] = ' ';
+
+    mat[0][0] = '*';//Origem
+	imprimir();
 }
 
-void imprimir(){//FunÃ§Ã£o que imprime a matriz completa
+
+void imprimir(){//Função que imprime a matriz completa
     int i, j;
     for(i = 0; i < 4; i++){
         printf("|");
         for(j = 0; j < 4; j++){
-            if(mat[i][j] == ' ')
-                printf(" ");
-            else
-                printf("%c",mat[i][j]);
+            printf("%c",mat[i][j]);
         }
         printf("|\n");
     }
 }
 
-void direita(){//FunÃ§Ã£o que move o '*' para a direita
+void direita(){//Função que move o '*' para a direita
     char aux;
 	if(mat[x][y] > mat[x][3]) { //Adicionando limite para a extremidade direita
 	    aux = mat[x][y];
@@ -90,7 +74,7 @@ void direita(){//FunÃ§Ã£o que move o '*' para a direita
 	}
 }
 
-void esquerda(){//FunÃ§Ã£o que move o '*' para a esquerda
+void esquerda(){//Função que move o '*' para a esquerda
     char aux;
     if(mat[x][y] > mat[x][0]) { //Adicionando limite para a extremidade esquerda
 	    aux = mat[x][y];
@@ -100,7 +84,7 @@ void esquerda(){//FunÃ§Ã£o que move o '*' para a esquerda
 	}
 }
 
-void cima(){//FunÃ§Ã£o que move o '*' para a cima
+void cima(){//Função que move o '*' para a cima
     char aux;
     if(mat[x][y] > mat[0][y]) { //Adicionando limite para a extremidade de cima
 		aux = mat[x][y];
@@ -110,7 +94,7 @@ void cima(){//FunÃ§Ã£o que move o '*' para a cima
 	}
 }
 
-void baixo(){//FunÃ§Ã£o que move o '*' para a baixo
+void baixo(){//Função que move o '*' para a baixo
     char aux;
     if(mat[x][y] > mat[3][y]) { //Adicionando limite para a extremidade de baixo
 	    aux = mat[x][y];
