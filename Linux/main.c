@@ -1,9 +1,10 @@
 //
 //  Created by Jonathan Pinho and Vinicius Mangueira on 09/07/2018.
-//  Copyright © 2018 Jonathan. All rights reserved.
+//  Copyright Â© 2018 Jonathan. All rights reserved.
 // Version 0.8 Relase: Beta
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <termios.h>
 void imprimir();
 void inicializa();
@@ -11,16 +12,17 @@ void direita();
 void esquerda();
 void cima();
 void baixo();
+char getch();
 
 int x, y;//Coordenadas da matriz
-char mat[4][4];//Criação da matriz
+char mat[4][4];//CriaÃ§Ã£o da matriz
 
 int main(void) {
     char tecla;
     int i, j;
     x = 0, y = 0;
     
-    inicializa();//Inicialização da Matriz
+    inicializa();//InicializaÃ§Ã£o da Matriz
     while(1){
 		tecla = getch();
 		system("clear");
@@ -43,7 +45,7 @@ int main(void) {
     printf("\n\n");
     return 0;
 }
-void inicializa(){//Função que inicializa a matriz no início do programa
+void inicializa(){//FunÃ§Ã£o que inicializa a matriz no inÃ­cio do programa
     int i, j;
     for(i = 0; i < 4; i++ ){
         printf("|");
@@ -67,7 +69,7 @@ void inicializa(){//Função que inicializa a matriz no início do programa
     }
 }
 
-void imprimir(){//Função que imprime a matriz completa
+void imprimir(){//FunÃ§Ã£o que imprime a matriz completa
     int i, j;
     for(i = 0; i < 4; i++){
         printf("|");
@@ -81,7 +83,7 @@ void imprimir(){//Função que imprime a matriz completa
     }
 }
 
-void direita(){//Função que move o '*' para a direita
+void direita(){//FunÃ§Ã£o que move o '*' para a direita
     char aux;
 	if(mat[x][y] > mat[x][3]) { //Adicionando limite para a extremidade direita
 	    aux = mat[x][y];
@@ -91,7 +93,7 @@ void direita(){//Função que move o '*' para a direita
 	}
 }
 
-void esquerda(){//Função que move o '*' para a esquerda
+void esquerda(){//FunÃ§Ã£o que move o '*' para a esquerda
     char aux;
     if(mat[x][y] > mat[x][0]) { //Adicionando limite para a extremidade esquerda
 	    aux = mat[x][y];
@@ -101,7 +103,7 @@ void esquerda(){//Função que move o '*' para a esquerda
 	}
 }
 
-void cima(){//Função que move o '*' para a cima
+void cima(){//FunÃ§Ã£o que move o '*' para a cima
     char aux;
     if(mat[x][y] > mat[0][y]) { //Adicionando limite para a extremidade de cima
 		aux = mat[x][y];
@@ -111,7 +113,7 @@ void cima(){//Função que move o '*' para a cima
 	}
 }
 
-void baixo(){//Função que move o '*' para a baixo
+void baixo(){//FunÃ§Ã£o que move o '*' para a baixo
     char aux;
     if(mat[x][y] > mat[3][y]) { //Adicionando limite para a extremidade de baixo
 	    aux = mat[x][y];
