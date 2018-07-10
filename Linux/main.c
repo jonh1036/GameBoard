@@ -1,9 +1,10 @@
 //
-//  Created by Jonathan Pinho and Vinicius Mangueira on 26/06/2018.
+//  Created by Jonathan Pinho and Vinicius Mangueira on 09/07/2018.
 //  Copyright © 2018 Jonathan. All rights reserved.
 // Version 0.8 Relase: Beta
 
 #include <stdio.h>
+#include <termios.h>
 void imprimir();
 void inicializa();
 void direita();
@@ -22,8 +23,7 @@ int main(void) {
     inicializa();//InicializaÁ„o da Matriz
     while(1){
 		tecla = getch();
-		//system("@cls||clear");//Limpando o terminal FUNFA NO DEVC++
-		system("cls");
+		system("clear");
 		switch(tecla){
 		    case 97: esquerda();//Movimentar para esquerda
 		        break;
@@ -43,7 +43,7 @@ int main(void) {
     printf("\n\n");
     return 0;
 }
-void inicializa(){//Função que inicializa a matriz no inÌcio do programa
+void inicializa(){//FunÁ„o que inicializa a matriz no inÌcio do programa
     int i, j;
     for(i = 0; i < 4; i++ ){
         printf("|");
@@ -91,7 +91,7 @@ void direita(){//FunÁ„o que move o '*' para a direita
 	}
 }
 
-void esquerda(){//Função que move o '*' para a esquerda
+void esquerda(){//FunÁ„o que move o '*' para a esquerda
     char aux;
     if(mat[x][y] > mat[x][0]) { //Adicionando limite para a extremidade esquerda
 	    aux = mat[x][y];
@@ -101,7 +101,7 @@ void esquerda(){//Função que move o '*' para a esquerda
 	}
 }
 
-void cima(){//Função que move o '*' para a cima
+void cima(){//FunÁ„o que move o '*' para a cima
     char aux;
     if(mat[x][y] > mat[0][y]) { //Adicionando limite para a extremidade de cima
 		aux = mat[x][y];
@@ -111,7 +111,7 @@ void cima(){//Função que move o '*' para a cima
 	}
 }
 
-void baixo(){//Função que move o '*' para a baixo
+void baixo(){//FunÁ„o que move o '*' para a baixo
     char aux;
     if(mat[x][y] > mat[3][y]) { //Adicionando limite para a extremidade de baixo
 	    aux = mat[x][y];
@@ -119,4 +119,22 @@ void baixo(){//Função que move o '*' para a baixo
 	    mat[x+1][y] = aux;
 		x +=1;
 	}   
+}
+
+char getch(){
+	char buf=0;
+	struct termios old={0};
+	fflush(stdout);
+	if(tcgetattr(0, &old)<0) perror("tcsetattr()");
+	old.c_lflag&=~ICANON;
+	old.c_lflag&=~ECHO;
+	old.c_cc[VMIN]=1;
+	old.c_cc[VTIME]=0;
+	if(tcsetattr(0, TCSANOW, &old)<0) perror("tcsetattr ICANON");
+	if(read(0,&buf,1)<0) perror("read()");
+	old.c_lflag|=ICANON;
+	old.c_lflag|=ECHO;
+	if(tcsetattr(0, TCSADRAIN, &old)<0) perror ("tcsetattr ~ICANON");
+	printf("%c\n",buf);
+	return buf;
 }
