@@ -16,7 +16,6 @@ char mat[4][4];//Criação da matriz
 
 int main(void) {
     char tecla;
-    int i, j;
     
     inicializa();//Inicialização da Matriz
     while(1){
