@@ -19,9 +19,9 @@ char mat[4][4];//Criação da matriz
 
 int main(void) {
     char tecla;
-    int i, j;
     x = 0, y = 0;
-    
+ 	
+    system("clear");
     inicializa();//Inicialização da Matriz
     while(1){
 		tecla = getch();
