@@ -11,13 +11,12 @@ void esquerda();
 void cima();
 void baixo();
 
-int x, y;//Coordenadas da matriz
+int x = 0, y = 0;//Coordenadas da matriz
 char mat[4][4];//Criação da matriz
 
 int main(void) {
     char tecla;
     int i, j;
-    x = 0, y = 0;
     
     inicializa();//Inicialização da Matriz
     while(1){
@@ -66,7 +65,8 @@ void imprimir(){//Função que imprime a matriz completa
 
 void direita(){//Função que move o '*' para a direita
     char aux;
-	if(mat[x][y] > mat[x][3]) { //Adicionando limite para a extremidade direita
+    int a = x, b = y+1;
+	if(b>=0 && b<=3) { //Adicionando limite para a extremidade direita
 	    aux = mat[x][y];
 	    mat[x][y] = mat[x][y+1];
 	    mat[x][y+1] = aux;
@@ -76,7 +76,8 @@ void direita(){//Função que move o '*' para a direita
 
 void esquerda(){//Função que move o '*' para a esquerda
     char aux;
-    if(mat[x][y] > mat[x][0]) { //Adicionando limite para a extremidade esquerda
+    int a = x, b = y-1;
+	if(b>=0 && b<=3) { //Adicionando limite para a extremidade esquerda
 	    aux = mat[x][y];
 	    mat[x][y] = mat[x][y-1];
 	    mat[x][y-1] = aux;
@@ -86,7 +87,8 @@ void esquerda(){//Função que move o '*' para a esquerda
 
 void cima(){//Função que move o '*' para a cima
     char aux;
-    if(mat[x][y] > mat[0][y]) { //Adicionando limite para a extremidade de cima
+    int a = x-1, b = y;
+	if(a>=0 && a<=3) { //Adicionando limite para a extremidade de cima
 		aux = mat[x][y];
 	    mat[x][y] = mat[x-1][y];
 	    mat[x-1][y] = aux;
@@ -96,7 +98,8 @@ void cima(){//Função que move o '*' para a cima
 
 void baixo(){//Função que move o '*' para a baixo
     char aux;
-    if(mat[x][y] > mat[3][y]) { //Adicionando limite para a extremidade de baixo
+    int a = x+1, b = y;
+	if(a>=0 && a<=3) { //Adicionando limite para a extremidade de baixo
 	    aux = mat[x][y];
 	    mat[x][y] = mat[x+1][y];
 	    mat[x+1][y] = aux;
